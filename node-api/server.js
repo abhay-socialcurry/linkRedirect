@@ -40,26 +40,29 @@ router.get('/', function(req, res) {
 
 // on routes that end in /bears
 // ----------------------------------------------------
-router.route('/bears')
+router.route("/api/special/app-download-link")
 
 	// create a bear (accessed at POST http://localhost:8080/bears)
-	.post(function(req, res) {
+	.get(function(req, res) {
 		
-		var bear = new Bear();		// create a new instance of the Bear model
-		bear.name = req.body.name;  // set the bears name (comes from the request)
-
-		bear.save(function(err) {
-			if (err)
-				res.send(err);
-
-			res.json({ message: 'Bear created!' });
-		});
+		var location = "http://www.socialcurry.com/index.php/unsupported";
+        var ua = req.headers['user-agent'];
+        if (/mobile/i.test(ua)){
+            if (/like Mac OS X/.test(ua)) location = "https://itunes.apple.com/in/app/social-curry/id1092438159?mt=8";
+            else if (/Android/.test(ua)) location = "https://play.google.com/store/apps/details?id=com.socialcurry";  
+        } 
+        //callback(null,head);
+        res.writeHead(301,
+            {Location: location}
+        );
+        res.end();
+        //callback(null,res);
 
 		
 	})
 
 	// get all the bears (accessed at GET http://localhost:8080/api/bears)
-	.get(function(req, res) {
+	/*.get(function(req, res) {
 		Bear.find(function(err, bears) {
 			if (err)
 				res.send(err);
@@ -67,7 +70,7 @@ router.route('/bears')
 			res.json(bears);
 		});
 	});
-
+*/
 // on routes that end in /bears/:bear_id
 // ----------------------------------------------------
 /*router.route('/bears/:bear_id')
