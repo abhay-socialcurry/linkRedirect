@@ -14,7 +14,7 @@ app.use(morgan('dev')); // log requests to the console
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port     = process.env.PORT || 3002; // set our port
+var port     = process.env.PORT || 8080; // set our port
 
 /*var mongoose   = require('mongoose');
 mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o'); // connect to our database
@@ -40,7 +40,7 @@ router.get('/', function(req, res) {
 
 // on routes that end in /bears
 // ----------------------------------------------------
-router.route("/api/special/app-download-link")
+router.route("/special/app-download-link")
 
 	// create a bear (accessed at POST http://localhost:8080/bears)
 	.get(function(req, res) {
