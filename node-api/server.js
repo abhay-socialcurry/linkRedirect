@@ -40,7 +40,7 @@ router.get('/', function(req, res) {
 
 // on routes that end in /bears
 // ----------------------------------------------------
-router.route("/special/app-download-link")
+router.route("/v1/user/app-download-link")
 
 	// create a bear (accessed at POST http://localhost:8080/bears)
 	.get(function(req, res) {
